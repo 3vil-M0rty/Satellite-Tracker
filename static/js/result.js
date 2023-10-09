@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 localStorage.setItem('secondCellText', secondCellText);
                 localStorage.setItem('nameCell', nameCell);
                 localStorage.setItem('cosparID', cosparID);
-                window.location.href = `tracking.html?tracking-noradID=${secondCellText}`;
+                window.location.href = `tracking.html?tracking-Satellite=${nameCell}`;
             });
         });
     }

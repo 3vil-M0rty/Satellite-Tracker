@@ -2,7 +2,8 @@ const noradID = localStorage.getItem('secondCellText');
 const nameSAT = localStorage.getItem('nameCell');
 const cosparID = localStorage.getItem('cosparID');
 
-
+const docTitle = document.getElementById('doctitle');
+docTitle.textContent = `LIVE TRACKING SATELLITE: ${nameSAT}` 
 
 let tleData = localStorage.getItem(`TLE_${noradID}`);
 const calculatedPositions = [];
@@ -56,15 +57,15 @@ function fetchTLE() {
                 const [latitude, longitude] = position;
 
                 const circleMarker = L.circleMarker([latitude, longitude], {
-                    radius: 1, 
+                    radius: 1,
                     color: '#F3AE4B',
-                    fillOpacity: 1, 
+                    fillOpacity: 1,
                 });
 
-                circleMarker.addTo(map2); 
+                circleMarker.addTo(map2);
                 const popupContent = 'Past 2 hours trajectory';
 
-                circleMarker.bindPopup(popupContent, {classname:'past'});
+                circleMarker.bindPopup(popupContent, { classname: 'past' });
 
                 circleMarker.on('mouseover', function () {
                     this.openPopup();
@@ -79,16 +80,16 @@ function fetchTLE() {
                 const [latitude, longitude] = position;
 
                 const circleMarker = L.circleMarker([latitude, longitude], {
-                    radius: 1, 
+                    radius: 1,
                     color: '#399e1b',
                     fillOpacity: 1,
                 });
 
-                circleMarker.addTo(map2); 
+                circleMarker.addTo(map2);
 
                 const popupContent = 'Future 2 hours trajectory';
 
-                circleMarker.bindPopup(popupContent, {classname:'future'});
+                circleMarker.bindPopup(popupContent, { classname: 'future' });
 
                 circleMarker.on('mouseover', function () {
                     this.openPopup();
@@ -178,60 +179,106 @@ setInterval(function () {
 }, 60000);
 
 
+function trailUpdate() {
+    if (tleData) {
+        calculateAndStoreSatellitePositions();
+        for (const position of calculatedPositions) {
+            const [latitude, longitude] = position;
+            const circleMarker = L.circleMarker([latitude, longitude], {
+                radius: 1,
+                color: '#F3AE4B',
+                fillOpacity: 1,
+            });
 
-const elevationData = JSON.parse(localStorage.getItem('elevationData'));
+            circleMarker.addTo(map2);
 
-if (tleData) {
-    calculateAndStoreSatellitePositions();
-    for (const position of calculatedPositions) {
-        const [latitude, longitude] = position;
-        const circleMarker = L.circleMarker([latitude, longitude], {
-            radius: 1,
-            color: '#F3AE4B',
-            fillOpacity: 1,
-        });
+            const popupContent = 'Past 2 hours trajectory';
 
-        circleMarker.addTo(map2);
+            circleMarker.bindPopup(popupContent, { classname: 'past' });
 
-        const popupContent = 'Past 2 hours trajectory';
+            circleMarker.on('mouseover', function () {
+                this.openPopup();
+            });
 
-        circleMarker.bindPopup(popupContent, {classname:'past'});
+            circleMarker.on('mouseout', function () {
+                this.closePopup();
+            });
+        }
+        for (const position of FuturecalculatedPositions) {
+            const [latitude, longitude] = position;
 
-        circleMarker.on('mouseover', function () {
-            this.openPopup();
-        });
+            const circleMarker = L.circleMarker([latitude, longitude], {
+                radius: 1,
+                color: '#399e1b',
+                fillOpacity: 1,
+            });
 
-        circleMarker.on('mouseout', function () {
-            this.closePopup();
+            circleMarker.addTo(map2);
+
+            const popupContent = 'Future 2 hours trajectory';
+
+            circleMarker.bindPopup(popupContent, { classname: 'future' });
+
+            circleMarker.on('mouseover', function () {
+                this.openPopup();
+            });
+
+            circleMarker.on('mouseout', function () {
+                this.closePopup();
+            });
+        }
+
+    }
+}
+
+trailUpdate();
+const intervalInMilliseconds = 2 * 60 * 60 * 1000; 
+setInterval(trailUpdate, intervalInMilliseconds);
+
+
+let olat, olong, oalt;
+
+if ("geolocation" in navigator) {
+    const storedElevation = localStorage.getItem("elevationData");
+
+    if (storedElevation) {
+        const elevationData = JSON.parse(storedElevation);
+        displayElevationData(elevationData);
+    } else {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            fetch(`https://api.open-meteo.com/v1/elevation?latitude=${latitude}&longitude=${longitude}`)
+                .then(response => response.json())
+                .then(data => {
+                    const altitude = data.elevation;
+                    const lat = latitude;
+                    const long = longitude;
+                    olat = latitude;
+                    olong = longitude;
+                    oalt = altitude;
+                    const elevationData = {
+                        latitude: lat,
+                        longitude: long,
+                        altitude: altitude
+                    };
+                    localStorage.setItem("elevationData", JSON.stringify(elevationData));
+                    displayElevationData(elevationData);
+                })
+                .catch(error => {
+                    console.error("Failed to fetch elevation data: " + error);
+                });
+        }, function (error) {
+            console.error(`Error getting geolocation: ${error.message}`);
         });
     }
-    for (const position of FuturecalculatedPositions) {
-        const [latitude, longitude] = position;
-
-        const circleMarker = L.circleMarker([latitude, longitude], {
-            radius: 1, 
-            color: '#399e1b',
-            fillOpacity: 1, 
-        });
-
-        circleMarker.addTo(map2); 
-
-        const popupContent = 'Future 2 hours trajectory';
-
-        circleMarker.bindPopup(popupContent, {classname:'future'});
-
-        circleMarker.on('mouseover', function () {
-            this.openPopup();
-        });
-
-        circleMarker.on('mouseout', function () {
-            this.closePopup();
-        });
-    }
-
+} else {
+    console.error("Geolocation is not available in this browser.");
 }
 
 
+const elevationData = JSON.parse(localStorage.getItem('elevationData'));
 
 function updateSatellitePosition() {
     const TLE = tleData;
@@ -252,17 +299,25 @@ function updateSatellitePosition() {
     const meanMotion = tle.no;
     const orbitalPeriodMinutes = 2 * Math.PI / meanMotion;
 
-    var observerGd = {
-        longitude: satellite.degreesToRadians(elevationData.longitude),
-        latitude: satellite.degreesToRadians(elevationData.latitude),
-        height: elevationData.latitude
-    };
+    if (elevationData) {
+        var observerGd = {
+            longitude: satellite.degreesToRadians(elevationData.longitude),
+            latitude: satellite.degreesToRadians(elevationData.latitude),
+            height: elevationData.latitude
+        };
+    } else {
+        var observerGd = {
+            longitude: olong,
+            latitude: olat,
+            height: oalt
+        };
+    }
+
 
     var positionEcf = satellite.eciToEcf(positionEci, gmst);
     var lookAngles = satellite.ecfToLookAngles(observerGd, positionEcf);
     var azimuth = degreesToCompassDirection(lookAngles.azimuth * 180 / Math.PI),
-        elevation = lookAngles.elevation * 180 / Math.PI,
-        rangeSat = lookAngles.rangeSat;
+        elevation = lookAngles.elevation * 180 / Math.PI
 
 
 
@@ -307,7 +362,7 @@ function updateSatellitePosition() {
             const satLatLng = satelliteMarker.getLatLng();
             map2.setView(satLatLng, map2.getZoom());
         } else {
-            map2.setView([0, 0], map2.getZoom());
+            map2.setView([0, 0], 1);
         }
     }
 }
@@ -418,41 +473,6 @@ function downloadTLETextAsFile(filename, text) {
 }
 
 
-if ("geolocation" in navigator) {
-    const storedElevation = localStorage.getItem("elevationData");
-
-    if (storedElevation) {
-        const elevationData = JSON.parse(storedElevation);
-        displayElevationData(elevationData);
-    } else {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-
-            fetch(`https://api.open-meteo.com/v1/elevation?latitude=${latitude}&longitude=${longitude}`)
-                .then(response => response.json())
-                .then(data => {
-                    const altitude = data.elevation;
-                    const lat = latitude;
-                    const long = longitude;
-                    const elevationData = {
-                        latitude: lat,
-                        longitude: long,
-                        altitude: altitude
-                    };
-                    localStorage.setItem("elevationData", JSON.stringify(elevationData));
-                    displayElevationData(elevationData);
-                })
-                .catch(error => {
-                    console.error("Failed to fetch elevation data: " + error);
-                });
-        }, function (error) {
-            console.error(`Error getting geolocation: ${error.message}`);
-        });
-    }
-} else {
-    console.error("Geolocation is not available in this browser.");
-}
 
 
 function displayElevationData(data) {
