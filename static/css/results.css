@@ -1,0 +1,373 @@
+html,
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #d4e5f0;
+    ;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #ffffff;
+    font-family: Arial;
+    padding: 10px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+#home {
+    float: left;
+}
+
+.navbar a {
+    float: right;
+    padding: 10px 12px;
+}
+
+.dropdown {
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    padding: 10px 12px;
+    background-color: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    margin: 0;
+}
+
+.navbar a:hover,
+.dropdown:hover {
+    background-color: #f3f3f3;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    right: 0;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #dbdbdb;
+    padding: 0;
+    z-index: 5000;
+}
+
+.dropdown-content a {
+    float: none;
+    color: #363636;
+    padding: 15px 15px;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: bolder;
+    display: flex;
+}
+
+.dropdown-content a:hover {
+    background-color: #f3f3f3;
+    color: black;
+}
+
+.containerres {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    width: calc(100%-20px);
+}
+
+.resPLUSpages {
+    height: 100vh;
+}
+
+.tableres {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    width: 70%;
+}
+
+#tableCaption {
+    padding: 3px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #071952;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tableres thead tr {
+    background-color: #82C3EC;
+    text-align: left;
+    color: white;
+    font-weight: bold;
+}
+
+.tableres th img {
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.tableres th,
+.tableres td {
+    padding: 10px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.tableres tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.tableres tbody tr:nth-of-type(odd) {
+    background-color: #F1F6F5;
+}
+
+.tableres tbody tr:nth-of-type(even) {
+    background-color: #ffffff;
+}
+
+.tableres tbody tr:last-of-type {
+    border-bottom: 2px solid #82C3EC;
+}
+
+.tableres tbody tr:hover {
+    background-color: #a7d5f1;
+}
+
+.tableres tbody td:hover:not(:last-child) {
+    background-color: #416176;
+    color: white;
+}
+
+.track {
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    border: 1px solid #071952;
+}
+
+.track:hover {
+    background-color: #071952;
+    border: 1px solid #000;
+    color: white;
+    font-weight: bold;
+}
+
+.nothing {
+    display: none;
+}
+
+.nothing img {
+    width: 350px;
+    height: 350px;
+}
+
+.nothing h1,
+.nothing p {
+    color: #071952;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nothing p {
+    font-size: 1.1em;
+}
+
+.nothing a {
+    cursor: pointer;
+}
+
+.nothing a img {
+    width: 50px;
+    height: 50px;
+}
+
+.pagination {
+    align-items: center;
+    justify-content: center;
+}
+
+#prevPage,
+#nextPage,
+#pageNumbers button {
+    padding: 5px 5px;
+    margin: 0 4px;
+    text-align: center;
+    width: 35px;
+    height: 25px;
+    font-size: 0.7em;
+    background-color: #344e5e;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+#prevPage:hover,
+#nextPage:hover,
+#pageNumbers button:hover {
+    background-color: #a7d5f1;
+    color: black;
+}
+
+.active-page {
+    background-color: #82C3EC;
+}
+
+.phonescroll {
+    display: none;
+}
+
+.expand img {
+    height: 20px;
+    width: 20px;
+}
+
+.expand {
+    position:absolute;
+    bottom: 5px;
+    right: 5px;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.expand:hover {
+    background-color: #82C3EC;
+    border-radius: 50%;
+}
+
+.information {
+    padding: 10px;
+    width: calc(100%-20px);
+}
+
+.information h2 {
+    color: #416176;
+    text-align: left;
+}
+
+.information p {
+    position: relative;
+    text-align: left; 
+    padding: 25px;
+    font-size: 18px;
+    color: #1a272f;
+    background-color: white;
+    box-shadow: -2px 2px 5px #416176;
+}
+
+.information p img {
+    vertical-align: middle;
+}
+
+.source-container,
+.source-container2 {
+    padding: 10px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    box-shadow: -2px 2px 5px #416176;
+}
+
+.source-container2 {
+    height: auto;
+}
+
+.source-container p {
+    background-color: none;
+    box-shadow: none;
+    padding: 0;
+    text-align: center;
+}
+
+
+#sourceCodeSelect,
+#ls-sourceCodeSelect,
+#ops-sourceCodeSelect {
+    padding: 10px;
+    margin-top: 30px;
+    width: 240px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #416176;
+    background-color: #c2d1da;
+}
+
+
+@media (max-width: 768px) {
+    .body {
+        overflow-x: hidden;
+    }
+
+    .containerres {
+        padding: 10px;
+        display: block;
+        overflow-x: auto;
+        max-width: 100%;
+        margin: 0;
+
+    }
+
+    .tableres {
+        width: 100%;
+    }
+
+    .resPLUSpages {
+        width: 100%;
+    }
+
+    .navbar {
+        max-width: 100%;
+    }
+
+    .tableres caption {
+        text-align: left;
+    }
+
+    .nothing img {
+        width: 300px;
+        height: 300px;
+    }
+
+
+    .tableres th,
+    .tableres td {
+        padding: 10px 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+    }
+
+    .pagination {
+        margin-top: 15px;
+    }
+
+    .phonescroll {
+        display: block;
+        margin-top: 5px;
+        font-weight: bold;
+        color: #071952;
+    }
+
+}

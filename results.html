@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEARCH RESULTS</title>
+    <link rel="icon" href="static/logo/icon.svg" type="image/svg">
+    <link rel="stylesheet" href="static/css/results.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" title="home" id="home">
+                <img src="static/logo/home.png" alt="home" style="height: 20px; width: 20px;">
+            </a>
+            <div class="dropdown" id="drp">
+                <button class="dropbtn" id="mnbttn">
+                    <img src="static/logo/burger.png" alt="menu" style="height: 20px; width: 20px;">
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="index.html">Search For Another Satellite</a>
+                    <a href="https://3vil-m0rty.github.io/Moroccan_Earthquakes/" target="_blank">Visit Today's Earthquakes</a>
+                    <a href="https://www.paypal.me/3vlM0rty" target="_blank">
+                        Support via PayPal
+                    </a><a href="https://github.com/3vil-M0rty" target="_blank">
+                        Visit me on Github
+                    </a>
+                </div>
+            </div>
+            <a href="https://www.paypal.me/3vlM0rty" title="Donate Via PayPal" target="_blank">
+                <img src="static/logo/paypal.png" alt="PayPal" style="height: 15px; width: 15px; margin-top: 2px;">
+            </a>
+            <a href="https://github.com/3vil-M0rty" title="Visit Me On Github" target="_blank">
+                <img src="static/logo/github.png" alt="Github" style="height: 15px; width: 15px; margin-top: 2px;">
+            </a>
+            <a href="https://www.instagram.com/thinkin.codes/" title="Visit Me On Instagram" target="_blank">
+                <img src="static/logo/instagram.png" alt="Instagram"
+                    style="height: 15px; width: 15px; margin-top: 2px;">
+            </a>
+        </nav>
+    </header>
+    <div class="resPLUSpages" id="TandP">
+        <div class="containerres">
+            <table class="tableres" id="tableID">
+                <caption id="tableCaption"></caption>
+                <thead>
+                    <tr>
+                        <th>COSPAR ID<a href="#COSPARID"><img src="static/logo/info.svg" alt="info"
+                                    style="width: 20px; height: 20px;"></a></th>
+                        <th>NORAD ID<a href="#NORADID"><img src="static/logo/info.svg" alt="info"
+                                    style="width: 20px; height: 20px;"></a></th>
+                        <th>Name</th>
+                        <th>Source<a href="#SOURCE"><img src="static/logo/info.svg" alt="info"
+                                    style="width: 20px; height: 20px;"></a></th>
+                        <th>Launch Date</th>
+                        <th>Launch Site<a href="#LAUNCHSITE"><img src="static/logo/info.svg" alt="info"
+                                    style="width: 20px; height: 20px;"></a></th>
+                        <th>Decay Date</th>
+                        <th>Ops Status<a href="#OPSSTATUS"><img src="static/logo/info.svg" alt="info"
+                                    style="width: 20px; height: 20px;"></a></th>
+                        <th>Track</th>
+                    </tr>
+                </thead>
+                <tbody id="resultTableBody">
+                </tbody>
+            </table>
+            <div class="nothing" id="noth">
+                <img src="static/logo/nothing.png" alt="not found">
+                <h1>NOTHING WAS FOUND</h1>
+                <p>go back home for a new search</p>
+                <a href="index.html"><img src="static/logo/home.png" alt="home"></a>
+            </div>
+        </div>
+        <div class="pagination">
+            <button id="prevPage">&lArr;</button>
+            <div id="pageNumbers"></div>
+            <button id="nextPage">&rAarr;</button>
+        </div>
+        <div class="phonescroll" id="phonescroll">scroll horizontally to navigate the table</div>
+    </div>
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+    <div class="information" id="info">
+        <div id="COSPARID">
+            <h2>COSPAR ID <a href="#TandP"><img src="static/logo/up.svg" alt="back" title="go back to table"
+                        style="width: 20px; height: 20px;"></a></h2>
+            <p>
+                <button class="expand" id="expand" title="expand"><img src="static/logo/expand.svg" alt="expand" 
+                        id="expand-img"></button>
+
+                <span class="partial-text">
+                    The International Designator, also known as COSPAR ID, is an international identifier assigned to
+                    artificial objects in space.<span id="continue">...</span>
+                </span>
+
+                <span id="full-text" style="display: none;">
+                    It consists of the launch year, a three-digit incrementing launch number
+                    of that year and up to a three-letter code representing the sequential identifier of a piece in a
+                    launch. In TLE format the first two digits of the year and the dash are dropped.
+
+                    For example, 1990-037A is the Space Shuttle Discovery on mission STS-31, which carried the Hubble
+                    Space
+                    Telescope (1990-037B) into space. This launch was the 37th known successful launch worldwide in
+                    1990.
+
+                    The designation system has been generally known as the COSPAR system, named for the Committee on
+                    Space
+                    Research (COSPAR) of the International Council for Science.
+                    <a href="https://en.wikipedia.org/wiki/International_Designator" target="_blank">
+                        <img src="static/logo/wiki.svg" alt="wikipedia" title="COSPAR ID WIKIPEDIA PAGE"
+                            style="width: 20px; height: 20px;">
+                    </a>
+                </span>
+
+            </p>
+        </div>
+
+        <div id="NORADID">
+            <h2>NORAD ID <a href="#TandP"><img src="static/logo/up.svg" alt="back" title="go back to table"
+                        style="width: 20px; height: 20px;"></a></h2>
+            <p>
+                <button class="expand" id="expand2" title="expand"><img src="static/logo/expand.svg" alt="expand" 
+                        id="expand-img2"></button>
+                <span class="partial-text"> The Satellite Catalog Number (SATCAT, also known as NORAD (North American
+                    Aerospace Defense) Catalog
+                    Number, NORAD ID, USSPACECOM object number or simply catalog number, among similar variants)<span id="continue2">...</span></span>
+
+                <span id="full-text2" style="display: none;">
+                    <br>
+                    is sequential nine-digit number assigned by the United States Space Command (USSPACECOM) in the order
+                    of
+                    launch or discovery to all artificial objects in the orbits of Earth and those that left Earth's
+                    orbit. The first catalogued object, catalog number 1, is the Sputnik 1 launch vehicle, with the
+                    Sputnik 1 satellite having been assigned catalog number 2.<br><br>
+
+                    Objects that fail to orbit or orbit for a short time are not catalogued. The minimum object size in
+                    the catalog is 10 centimetres (3.9 in) in diameter. As of November 15, 2022, the catalog listed
+                    54,200 objects, including 14,102 satellites that had been launched into orbit since 1957 of which
+                    7,043
+                    were still active. 24,146 of the objects were well tracked while 1,850 were lost. In addition
+                    USSPACECOM was also tracking 20,900 analyst objects. Analyst objects are variably tracked and in
+                    constant flux, so their catalog and element set data are not published. As of November 7, 2022 ESA
+                    estimated there were about 36,500 pieces of orbiting debris that are large enough for USSPACECOM to
+                    track.<br><br>
+
+                    Permanently catalogued objects are assigned a number from 1 to 69,999 or above 99,999. Space-Track
+                    is
+                    expected to start publishing objects greater than 99,999 in 2020 starting with debris discovered by
+                    Space Fence.<br><br>
+
+                    Space Command shares the catalog via space-track.org, which is maintained by the 18th Space Defense
+                    Squadron (18 SDS).
+                    <a href="https://en.wikipedia.org/wiki/Satellite_Catalog_Number" target="_blank">
+                        <img src="static/logo/wiki.svg" alt="wikipedia" title="NORAD ID WIKIPEDIA PAGE"
+                            style="width: 20px; height: 20px;">
+                    </a>
+                </span>
+            </p>
+        </div>
+        <div id="SOURCE">
+            <h2>SOURCE CODE <a href="#TandP"><img src="static/logo/up.svg" alt="back" title="go back to table"
+                        style="width: 20px; height: 20px;"></a>
+            </h2>
+            <div class="source-container">
+                <div class="source-down">
+                    <select id="sourceCodeSelect">
+                        <option value="" hidden>Select a source code</option>
+                    </select>
+                </div>
+                <div id="descriptionDisplay">
+                    <p>Select a source code to view its description.</p>
+                </div>
+            </div>
+        </div>
+        <div id="LAUNCHSITE">
+            <h2>LAUNCH SITE <a href="#TandP"><img src="static/logo/up.svg" alt="back" title="go back to table"
+                        style="width: 20px; height: 20px;"></a>
+            </h2>
+            <div class="source-container">
+                <div class="source-down">
+                    <select id="ls-sourceCodeSelect">
+                        <option value="" hidden>Select a launch site code</option>
+                    </select>
+                </div>
+                <div id="ls-descriptionDisplay">
+                    <p>Select a launch site code to view its description.</p>
+                </div>
+            </div>
+        </div>
+        <div id="OPSSTATUS">
+            <h2>OPS STATUS <a href="#TandP"><img src="static/logo/up.svg" alt="back" title="go back to table"
+                        style="width: 20px; height: 20px;"></a>
+            </h2>
+            <div class="source-container">
+                <div class="source-down">
+                    <select id="ops-sourceCodeSelect">
+                        <option value="" hidden>Select an ops</option>
+                    </select>
+                </div>
+                <div id="ops-descriptionDisplay">
+                    <p>Select an operational status to view its description.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/js/result.js"></script>
+</body>
+
+</html>

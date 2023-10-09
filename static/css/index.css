@@ -1,0 +1,178 @@
+html, body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #ffffff;
+    font-family: Arial;
+    padding: 10px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+#home {
+    float: left;
+}
+
+.navbar a {
+    float: right;
+    padding: 10px 12px;
+}
+
+.dropdown {
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    padding: 10px 12px;
+    background-color: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    margin: 0;
+}
+
+.navbar a:hover,
+.dropdown:hover {
+    background-color: #f3f3f3;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    right: 0;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #dbdbdb;
+    padding: 0;
+    z-index: 5000;
+}
+
+.dropdown-content a {
+    float: none;
+    color: #363636;
+    padding: 15px 15px;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: bolder;
+    display: flex;
+}
+
+.dropdown-content a:hover {
+    background-color: #f3f3f3;
+    color: black;
+}
+
+.search-bar {
+    background-color: none;
+    display: flex;
+    align-items: center;
+    float: center;
+    max-width: 700px;
+    color: white;
+}
+
+.search {
+    background-color: #ececec;
+    border-radius: 50%;
+    border: none;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.search-bar input {
+    background-color: #ececec;
+    font: inherit;
+    font-size: 12px;
+    margin-right: 5px;
+    width: 85px;
+    max-width: 190px;
+    border-radius: 60px;
+    padding: 10px;
+    border: none;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    transition: width 0.5s ease-in-out;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: black;
+}
+
+.search-bar input:focus {
+    border: none;
+    background-color: #82C3EC;
+    width: 170px;
+}
+
+.search:hover {
+    background-color: #82C3EC;
+    border-radius: 50%;
+}
+
+.search-bars {
+    font-size: 14px;
+    padding: 10px 20px;
+    text-align: left;
+    height: 100%;
+    background-image: url(../logo/earth.png);
+    background-position: center ;
+    background-size: cover;
+    background-color: black;
+    background-repeat: no-repeat;
+}
+
+.search-bars p {
+    font-weight: bold;
+    min-width: 120px;
+}
+
+ #loading-overlay {
+    display: none;
+}
+.spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    transition: opacity 0.75s, visibility 0.75s;
+}
+
+
+.spinner::after {
+    content: "";
+    width: 75px;
+    height: 75px;
+    border: 15px solid transparent;
+    border-top-color:#82C3EC;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}

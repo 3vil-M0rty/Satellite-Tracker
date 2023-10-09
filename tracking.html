@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/logo/icon.svg" type="image/svg">
+    <link rel="stylesheet" href="static/css/tracking.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" title="home" id="home">
+                <img src="static/logo/home.png" alt="home" style="height: 20px; width: 20px;">
+            </a>
+            <div class="dropdown" id="drp">
+                <button class="dropbtn" id="mnbttn">
+                    <img src="static/logo/burger.png" alt="menu" style="height: 20px; width: 20px;">
+                </button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="index.html">Search For Another Satellite</a>
+                    <a href="https://3vil-m0rty.github.io/Moroccan_Earthquakes/" target="_blank">Visit Today's Earthquakes</a>
+                    <a href="https://www.paypal.me/3vlM0rty" target="_blank">
+                        Support via PayPal
+                    </a><a href="https://github.com/3vil-M0rty" target="_blank">
+                        Visit me on Github
+                    </a>
+                </div>
+            </div>
+            <a href="https://www.paypal.me/3vlM0rty" title="Donate Via PayPal" target="_blank">
+                <img src="static/logo/paypal.png" alt="PayPal" style="height: 15px; width: 15px; margin-top: 2px;">
+            </a>
+            <a href="https://github.com/3vil-M0rty" title="Visit Me On Github" target="_blank">
+                <img src="static/logo/github.png" alt="Github" style="height: 15px; width: 15px; margin-top: 2px;">
+            </a>
+            <a href="https://www.instagram.com/thinkin.codes/" title="Visit Me On Instagram" target="_blank">
+                <img src="static/logo/instagram.png" alt="Instagram"
+                    style="height: 15px; width: 15px; margin-top: 2px;">
+            </a>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="userinfohead">Your Information</div>
+        <div class="info-container">
+            <span id="userInfo"></span>
+            <div id="map"></div>
+        </div>
+        <div id="satinfohead">Satellite Information</div>
+        <div class="info-container">
+            <br>
+            <span id="satInfo"></span><br>
+            <a href="index.html" id="goback" style="display: none;">
+                <img src="static/logo/home.png" alt="home" style="width: 30px; height: 30px;"><br>
+                <span id="gobacktxt">go back home</span>
+            </a>
+            <span id="satData"></span>
+            <button class="tlebttn" id="tlebttn"><i class="fa fa-download"></i> Download TLE</button>
+        </div>
+    </div>
+    <div id="map2"></div>
+    <button id="recenterButton" title="Recenter to default for free dragging"><img id="recenter" src="static/logo/center.svg" style="height: 20px; width: 20px;"></button>
+
+    <script src="https://unpkg.com/@joergdietrich/leaflet.terminator"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/satellite.js/4.0.0/satellite.js"></script>
+    <script src="https://unpkg.com/@turf/turf@6.3.0"></script>
+    <script src="static/js/track.js"></script>
+</body>
+
+</html>
