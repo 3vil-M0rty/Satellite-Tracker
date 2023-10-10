@@ -195,7 +195,7 @@ body {
 }
 
 .tlebttn {
-    background-color: #90c7ff;
+    background-color: #82C3EC;
     border: none;
     color: rgb(6, 7, 59);
     padding: 7px 10px;
@@ -203,12 +203,14 @@ body {
     font-size: 1.01em;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: 0 6px 6px -6px black;
     margin-left: 34px;
 }
 
 .tlebttn:hover {
     background-color: royalblue;
     color: white;
+    transform: translateY(-4px);
 }
 
 .tlebttn img {
@@ -277,7 +279,14 @@ body {
     }
 
     .tlebttn {
-        margin-left: 60%;
+        position: absolute;
+        right: 10px;
+    }
+
+    .tlebttn:hover {
+        background-color: royalblue;
+        color: white;
+        transform: none;
     }
 
     .container {

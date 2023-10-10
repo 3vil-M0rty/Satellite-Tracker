@@ -118,27 +118,23 @@ const map2 = L.map('map2', {
 var streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 25,
 
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
 var topographicLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
     maxZoom: 25,
-    attribution: '&copy; <a href="https://www.opentopomap.org">OpenTopoMap</a> contributors'
 });
 
 var cartoDBDarkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
     maxZoom: 25,
-    attribution: 'Map data &copy; <a href="https://www.carto.com/">CartoDB</a> contributors'
 });
 
 var cartoDBVoyagerLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
     maxZoom: 25,
-    attribution: 'Map data &copy; <a href="https://www.carto.com/">CartoDB</a> contributors'
 });
 
 
 var esriWorldImageryLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    maxZoom: 25,
 });
 
 var baseLayers = {
@@ -445,9 +441,6 @@ function getTLE(ID) {
                 } else {
                     downloadTLETextAsFile(`TLE_${ID}.txt`, TLE);
                     markUserAsDownloaded();
-                    tleButton.innerHTML = "Downloaded";
-                    tleButton.color = "white";
-                    tleButton.style.backgroundColor = "green";
                 }
             } else {
                 console.log('TLE Information not found!');
